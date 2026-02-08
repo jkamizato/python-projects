@@ -15,3 +15,5 @@ Reading text via webcam.
 > MouseMovement
 Using webcam, detecting hands movement to control mouse and click.
 
+> YouTubeAnalysis
+Face recognition and YOLO library to identify any objects in a youtube video.
