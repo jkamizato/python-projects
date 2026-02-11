@@ -73,7 +73,8 @@ with pd.option_context('display.max_columns', None, 'display.max_colwidth', None
 
 '''
 - Colocar na tabela o maior gastador por estado e comparar ele à media nacional e comparar à media estadual
-- Procurar a contribuicao por Estado e analisar quanto um deputado custa e quanto o estado contribui (em porcentagem)
+- Procurar a contribuição por Estado e analisar quanto um deputado custa e quanto o estado contribui (em percentage)
+- Fazer uma analise dos maiores gastadores
 '''
 
 
