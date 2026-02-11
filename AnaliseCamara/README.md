@@ -2,6 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-Analise-150458?style=flat&logo=pandas&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Progress-orange?style=flat)
 
 ## Sobre o projeto
 
