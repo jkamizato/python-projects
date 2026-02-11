@@ -38,6 +38,12 @@ analise_uf = df.groupby('UF').agg({
     'Deputado': 'nunique',
 }).reset_index()
 
+# Media Por Parlamentar (Gasto total dividido por Parlamentar)
+total_deputados = df['Deputado'].nunique()
+media_parlamentar = total_gasto / total_deputados
+
+print(f"Media de gasto por parlamentar: R$ {media_parlamentar:,.2f}")
+
 # 2. Agora criamos a coluna calculada (Aritmética de Colunas)
 # Essa é a mágica da vetorização: dividimos a coluna inteira de uma vez
 analise_uf['Media_Por_Parlamentar'] = analise_uf['Valor'] / analise_uf['Deputado']
@@ -55,10 +61,20 @@ ranking_real.rename(columns={
 # Formatando para ler fácil
 display_ranking = ranking_real.copy()
 display_ranking['Gasto_Total_Estado'] = display_ranking['Gasto_Total_Estado'].map('R$ {:,.2f}'.format)
-display_ranking['Media_Por_Parlamentar'] = display_ranking['Media_Por_Parlamentar'].map('R$ {:,.2f}'.format)
+display_ranking['Media_Por_Parlamentar_Reais'] = display_ranking['Media_Por_Parlamentar'].map('R$ {:,.2f}'.format)
+display_ranking['Relação à Média Nacional'] = ((display_ranking['Media_Por_Parlamentar'] / media_parlamentar) - 1).map('{:.2%}'.format)
 
 print("--- Ranking Real: Custo Médio por Deputado em cada Estado ---")
-print(display_ranking)
+
+with pd.option_context('display.max_columns', None, 'display.max_colwidth', None, 'display.expand_frame_repr', False):
+    print(display_ranking.drop(columns='Media_Por_Parlamentar'))
+
+## TODO
+
+'''
+- Colocar na tabela o maior gastador por estado e comparar ele à media nacional e comparar à media estadual
+- Procurar a contribuicao por Estado e analisar quanto um deputado custa e quanto o estado contribui (em porcentagem)
+'''
 
 
 # P3: Com o que eles mais gastam? (Categorias)
